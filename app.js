@@ -1,31 +1,44 @@
-let numbers = [];
-let count = 0;
+var generatedNumbers = [];
+		let count = 0;
+		
+		function generateRandomNumber() {
+			count++;
+			if(count < 5)
+			{
+				// Generar un número aleatorio entre 1 y 400
+			var randomNumber = Math.floor(Math.random() * 400) + 1;
 
-function renderNumberList() {
-  const numberListElement = document.querySelector('#number-list');
-  numberListElement.innerHTML = '';
-  numbers.forEach((number, index) => {
-    const listItemElement = document.createElement('li');
-    const listItemText = document.createTextNode(`${index + 1}: `);
-    const circleSpanElement = document.createElement('span');
-    circleSpanElement.classList.add('number-circle');
-    circleSpanElement.textContent = number;
-    listItemElement.appendChild(listItemText);
-    listItemElement.appendChild(circleSpanElement);
-    numberListElement.appendChild(listItemElement);
-  });
-}
+			// Verificar si el número ya fue generado previamente
+			while (generatedNumbers.includes(randomNumber)) {
+				randomNumber = Math.floor(Math.random() * 400) + 1;
+			}
 
-function handleButtonClick() {
-  if (count < 4) {
-    count++;
-    const randomNumber = Math.floor(Math.random() * 400) + 1;
-    numbers.push(randomNumber);
-    renderNumberList();
-  }
-  if (count === 4) {
-    document.querySelector('#generate-btn').disabled = true;
-  }
-}
+			// Agregar el número a la lista y mostrarlo en la pantalla
+			generatedNumbers.push(randomNumber);
+			updateNumberList();
+			}
+		}
 
-document.querySelector('#generate-btn').addEventListener('click', handleButtonClick);
+		function updateNumberList() {
+			
+			// Mostrar los últimos 4 números generados en los elementos con la clase "number"
+			var numberElements = document.getElementsByClassName("number");
+
+			for (var i = 0; i < numberElements.length; i++) {
+				if (i < generatedNumbers.length) {
+					numberElements[i].innerHTML = generatedNumbers[generatedNumbers.length - i - 1];
+				} else {
+					numberElements[i].innerHTML = "";
+				}
+			}
+
+			// Mostrar la lista completa de números generados
+			var numberListElement = document.getElementById("number-list");
+			numberListElement.innerHTML = "<strong>Números generados:</strong>";
+			for (var i = 0; i < generatedNumbers.length; i++) {
+				var numberItem = document.createElement("div");
+				numberItem.classList.add("number-item");
+				numberItem.innerHTML = "Número " + (i + 1) + ": " + generatedNumbers[i];
+				numberListElement.appendChild(numberItem);
+			}
+		}

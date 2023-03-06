@@ -4,86 +4,7 @@
 <html>
 <head>
 	<title>Rifa AFP Hayas</title>
-	<style>
-		html, body {
-			width: 100%;
-			height: 100%;
-			margin: 0;
-			padding: 0;
-		}
-		body {
-			background-color: #8BC34A;
-			font-family: Arial, sans-serif;
-		}
-		h1 {
-			font-size: 40px;
-			margin-top: 30px;
-			margin-bottom: 20px;
-			text-align: center;
-			color: #fff;
-		}
-		img {
-			display: block;
-			margin: 0 auto;
-			max-width: 90%;
-			height: auto;
-		}
-		#random-numbers {
-			display: flex;
-			flex-wrap: wrap;
-			justify-content: center;
-			align-items: center;
-			margin-top: 50px;
-		}
-		.number {
-			font-size: 60px;
-			text-align: center;
-			margin: 20px;
-			width: 130px;
-			height: 130px;
-			border-radius: 50%;
-			background-color: #eee;
-			display: flex;
-			justify-content: center;
-			align-items: center;
-		}
-		#number-list {
-			margin-top: 20px;
-			font-size: 20px;
-			display: flex;
-			flex-direction: column;
-			align-items: center;
-			color: #fff;
-		}
-		.number-item {
-			margin-bottom: 10px;
-		}
-		button {
-			background-color: #8B4513;
-			color: #fff;
-			font-size: 24px;
-			border: none;
-			border-radius: 4px;
-			padding: 12px 24px;
-			display: block;
-			margin: 0 auto;
-			margin-top: 20px;
-		}
-
-		img {
-        width: 20%;
-      }
-
-		button:hover {
-        background-color: #A76932;
-      }
-
-      @media screen and (max-width: 768px) {
-        .number {
-          width: calc(50% - 40px);
-          margin: 10px;
-        }
-	</style>
+	<link rel="stylesheet" type="text/css" href="styles.css">
 </head>
 <body>
 	<header>
@@ -98,52 +19,6 @@
 	</div>
 	<button onclick="generateRandomNumber()">Escoger un ganador</button>
 	<div id="number-list"></div>
-
-	<script>
-		var generatedNumbers = [];
-		let count = 0;
-		function handleButtonClick() {
-  if (count < 4) {
-    count++;
-    const randomNumber = Math.floor(Math.random() * 400) + 1;
-    numbers.push(randomNumber);
-    renderNumberList();
-  }
-  if (count === 4) {
-    generateBtn.disabled = true;
-  }
-}
-
-		function generateRandomNumber() {
-			// Generar un número aleatorio entre 1 y 400
-			var randomNumber = Math.floor(Math.random() * 400) + 1;
-
-			// Agregar el número a la lista y mostrarlo en la pantalla
-			generatedNumbers.push(randomNumber);
-			updateNumberList();
-		}
-
-		function updateNumberList() {
-			// Mostrar los últimos 4 números generados en los elementos con la clase "number"
-			var numberElements = document.getElementsByClassName("number");
-			for (var i = 0; i < numberElements.length; i++) {
-				if (i < generatedNumbers.length) {
-					numberElements[i].innerHTML = generatedNumbers[generatedNumbers.length - i - 1];
-				} else {
-					numberElements[i].innerHTML = "";
-				}
-			}
-
-			// Mostrar la lista completa de números generados
-			var numberListElement = document.getElementById("number-list");
-			numberListElement.innerHTML = "<strong>Números generados:</strong>";
-			for (var i = 0; i < generatedNumbers.length; i++) {
-				var numberItem = document.createElement("div");
-				numberItem.classList.add("number-item");
-				numberItem.innerHTML = "Número " + (i + 1) + ": " + generatedNumbers[i];
-				numberListElement.appendChild(numberItem);
-			}
-		}
-	</script>
+	<script src="app.js"></script>
 </body>
 </html>
