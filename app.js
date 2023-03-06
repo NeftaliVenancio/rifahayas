@@ -41,4 +41,4 @@ var generatedNumbers = [];
 				numberItem.innerHTML = "Número " + (i + 1) + ": " + generatedNumbers[i];
 				numberListElement.appendChild(numberItem);
 			}
-		}
+		} 
