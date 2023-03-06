@@ -106,7 +106,7 @@ const numbersContainer = document.getElementById('numbers-container');
 let count = 0;
 
 generateBtn.addEventListener('click', () => {
-  if (count <= 4) {
+  if (count < 4) {
     const randomNumber = Math.floor(Math.random() * 400) + 1;
     const newNumberElement = document.createElement('div');
     newNumberElement.innerHTML = `<span class="number-circle">${count + 1}</span>${randomNumber}`;
